@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css" />
+  </head>
+  <body>
+    <div class="cent">
+      <h1>Welcome to <span id="t">My Website</span></h1>
+      <h5>Advanced HTML, CSS & JS Example</h5>
+    </div>
+    <div class="cnt">
+      <p>
+        Click me to change my color! This is a more challenging HTML page for
+        students. Famous quote:"Learning never exhausts the mind."Code example
+        console.log("Hello World")
+      </p>
+      <p>
+        "The best way to predict the future is to create it."- Abraham Lincoln
+      </p>
+      <div class="c"><img src="ebv" alt="Dummy Image" /></div>
+    </div>
+    <div class="t">
+      <h3>Student Data Table</h3>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Course</th>
+        </tr>
+        <tr>
+          <td>Bhuvan</td>
+          <td>20</td>
+          <td>Computer Science</td>
+        </tr>
+        <tr>
+          <td>Hrithik</td>
+          <td>22</td>
+          <td>Information Technology</td>
+        </tr>
+        <td>Sweekar</td>
+        <td>19</td>
+        <td>Artificial Intelligence</td>
+      </table>
+    </div>
+    <div id="first">
+      <h3>Top Skills</h3>
+      <ul>
+        <li>HTML</li>
+        <ul>
+          <li>Tags</li>
+          <li>Attributes</li>
+          <li>Forms</li>
+        </ul>
+        <li>CSS</li>
+        <ul>
+          <li>Selectors</li>
+          <li>Box Model</li>
+          <li>Positioning</li>
+        </ul>
+        <li>Javascript</li>
+        <ul>
+          <li>DOM</li>
+          <li>Events</li>
+          <li>Functions</li>
+        </ul>
+        <li id="data"></li>
+      </ul>
+      <input type="text" id="in" placeholder="Enter new skill" />
+      <button type="submit">Add Skill</button>
+      <script>
+        const input = document.getElementById("in");
+        const btn = document.getElementsByTagName("button");
+        const para = document.getElementById("data");
+        btn[0].addEventListener("click", () => {
+          console.log(input.value);
+          para.textContent = input.value;
+        });
+      </script>
+    </div>
+    <div id="second">
+      <h3>Contact Form</h3>
+      <p>Name:</p>
+      <input type="text" id="third" placeholder="Enter your name" />
+      <p>Email:</p>
+      <input type="email" id="third" placeholder="Enter your email" />
+      <br /><button type="submit" id="btny">Submit</button>
+      <script>
+        let a = document.getElementById("third");
+        if (a != "@") {
+          Error("It does not contain a @");
+        } else {
+          return true;
+        }
+      </script>
+    </div>
+    <div id="third">
+      <h3>Fun Zone</h3>
+      <button id="bt" onclick="changeColor()">Change Background Color</button>
+      <script>
+        function changeColor() {
+          document.body.style.backgroundColor = "rgb(241, 5, 87)";
+        }
+      </script>
+    </div>
+  </body>
+</html>
