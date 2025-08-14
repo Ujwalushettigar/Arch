@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Table</title>
+<style>
+    h1{
+        /* background-color: rgb(88, 88, 226); */
+        background: linear-gradient(to right,rgb(90, 90, 215),rgb(128, 128, 198));
+        padding: 20px 20px;
+        color: white;
+        text-align: center;
+    
+    }
+    .line1{
+        margin-top: -20px;
+        font-weight:bolder;
+        color:rgb(90, 90, 215) ;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 20px;
+    }
+    button {
+        background-color: rgb(90, 90, 215);
+        color: white;
+        padding: 8px 16px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    table {
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+        margin-top: 10px;
+        width: 100%;
+        
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color:rgb(90, 90, 215);
+        color: white;
+    }
+    tr:hover {
+        background-color: lightgray;
+    }
+</style>
+</head>
+<body>
+    <h1>Student Management Assesment</h1>
+    <h2>Actions</h2>
+<div class="line1">_______________________________________________________________________________________________________________________________________________________________________</div>
+<button id="toggleBgBtn">Toggle Background Color</button>
+<button id="toggleTableBtn">Hide/Show Table</button>
+<button id="Sortname">Sort by Name</button>
+<button id="showAgeBtn">Show Age > 20</button>
+<button id="resettbl">Reset Table</button>
+<h2>Student List</h2>
+<div class="line1">_______________________________________________________________________________________________________________________________________________________________________</div>
+
+<div id="tableContainer"></div>
+
+<script>
+const students = [
+    { name: "Amit Sharma", age: 20, course: "Computer Science" },
+    { name: "Priya Singh", age: 22, course: "Information Science" },
+    { name: "Ravi Kumar", age: 19, course: "Electronics" },
+    { name: "Neha Verma", age: 21, course: "Mechanical" },
+    { name: "Sohan Lal", age: 23, course: "Civil Engineering" },
+];
+
+let currentBg = '#f8f9fa';
+const tableContainer = document.getElementById('tableContainer');
+
+function renderTable(data) {
+    tableContainer.innerHTML = "";
+    const table = document.createElement('table');
+
+    const headerRow = document.createElement('tr');
+    ["Name", "Age", "Course"].forEach(text => {
+        const th = document.createElement('th');
+        th.textContent = text;
+        headerRow.appendChild(th);
+    });
+    table.appendChild(headerRow);
+
+    data.forEach(student => {
+        const row = document.createElement('tr');
+        Object.values(student).forEach(value => {
+            const td = document.createElement('td');
+            td.textContent = value;
+            row.appendChild(td);
+        });
+        table.appendChild(row);
+    });
+
+    tableContainer.appendChild(table);
+}
+
+renderTable(students);
+
+document.getElementById('toggleBgBtn').addEventListener('click', () => {
+    currentBg = (currentBg === '#f8f9fa') ? 'rgb(77, 77, 223' : '#f8f9fa';
+    document.body.style.backgroundColor = currentBg;
+});
+
+document.getElementById('toggleTableBtn').addEventListener('click', () => {
+    tableContainer.style.display = (tableContainer.style.display === "none") ? "block" : "none";
+});
+
+document.getElementById('Sortname').addEventListener('click', () => {
+    const sorted = [...students].sort((a, b) => a.name.localeCompare(b.name));
+    renderTable(sorted);
+});
+
+document.getElementById('showAgeBtn').addEventListener('click', () => {
+    renderTable(students.filter(s => s.age > 20));
+});
+
+document.getElementById('resettbl').addEventListener('click', () => {
+    renderTable(students); 
+});
+
+</script>
+
+</body>
+</html>
